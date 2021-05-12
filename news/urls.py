@@ -6,10 +6,11 @@ from . import views
 
 
 urlpatterns=[
-    path('',views.welcome,name = 'welcome'),
-    path('today/',views.news_of_day,name='newsToday'),
-re_path(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_news,name = 'pastNews')
+ 
+   re_path(r'^$',views.news_today,name='newsToday'),
+re_path(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_news,name = 'pastNews'),
+re_path(r'^search/',views.search_results,name='search_results')
    
 ]
-#  path('archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_news,name = 'pastNews')
+#  path('today/',views.news_of_day,name='newsToday'),
 
