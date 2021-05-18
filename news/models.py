@@ -10,12 +10,16 @@ class Editor(models.Model):
     
     def __str__(self):
         return self.first_name
+    
     def save_editor(self):
         self.save()
+        
     def delete_editor(self):
         self.delete()
-    # def update_last_name(self,new_last_name):
-    #     self.update(last_name=new_last_name)
+        
+        
+    def update_last_name(self,id,new_last_name):
+        self.objects.filter(id=id).update(last_name=new_last_name)
 
         
     class Meta:
@@ -37,6 +41,7 @@ class Article(models.Model):
     editor = models.ForeignKey(Editor,on_delete=models.CASCADE)
     tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
+    article_image = models.ImageField(upload_to = 'articles/',null=True)
     
     def __str__(self):
         return self.title
