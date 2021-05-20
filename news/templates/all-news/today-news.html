@@ -16,8 +16,13 @@
       {% if news_item.article_image %}
 
       <img
+        style="
+          width: 200px;
+          height: 100px;
+          object-fit: cover;
+          background-repeat: no-repeat;
+        "
         src="{{news_item.article_image.url}}"
-        class="img-responsive"
         alt="Image"
       />
 
@@ -31,7 +36,7 @@
   </div>
   {% endfor %}
 
-  <div class="container">
+  <div class="container mt-3">
     <form action="{%url 'newsToday'%}" method="post">
       {%csrf_token%} {% bootstrap_form letterForm layout='inline' %}
       <input type="submit" value="Subscribe" />
